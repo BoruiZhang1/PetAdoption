@@ -7,7 +7,7 @@ public class ExoticAnimal {
     private String category;
     private String subSpecies;
     private int yearsOld;
-    private boolean adopted;
+    private boolean isAvailable;
     
     public ExoticAnimal(String uniqueId, String animalName, String category, String subSpecies, int yearsOld) {
 		super();
@@ -16,7 +16,7 @@ public class ExoticAnimal {
 		this.category = category;
 		this.subSpecies = subSpecies;
 		this.yearsOld = yearsOld;
-		this.adopted = false;
+		this.isAvailable = true;
 	}
 
 	public String getUniqueId() {
@@ -59,13 +59,15 @@ public class ExoticAnimal {
 		this.yearsOld = yearsOld;
 	}
 
-	public boolean isAdopted() {
-		return adopted;
+	public boolean isAvailable() {
+		return isAvailable;
 	}
 
-	public void setAdopted(boolean adopted) {
-		this.adopted = adopted;
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
 	}
+
+	
     
     
 
