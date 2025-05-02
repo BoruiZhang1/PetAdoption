@@ -67,8 +67,14 @@ public class ExoticAnimal {
 		this.isAvailable = isAvailable;
 	}
 
-	
-    
-    
+	public void markAsAdopted() {
+		this.isAvailable = false;
+	}
+
+	@Override
+	public String toString() {
+		return "ExoticAnimal [uniqueId=" + uniqueId + ", animalName=" + animalName + ", category=" + category
+				+ ", subSpecies=" + subSpecies + ", yearsOld=" + yearsOld + ", isAvailable=" + isAvailable + "]";
+	}
 
 }
