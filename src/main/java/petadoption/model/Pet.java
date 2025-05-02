@@ -67,6 +67,15 @@ public abstract class Pet implements Comparable<Pet>{
 		this.adopted = adopted;
 	}
 	
-	
+	@Override
+    public int compareTo(Pet other) {
+        return this.name.compareToIgnoreCase(other.getName());
+    }
+
+	@Override
+	public String toString() {
+		return "Pet [id=" + id + ", name=" + name + ", type=" + type + ", species=" + species + ", age=" + age
+				+ ", adopted=" + adopted + "]";
+	}
 
 }
