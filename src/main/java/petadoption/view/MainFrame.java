@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -14,7 +15,6 @@ import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
 	
-	private JTable petsTable;
 	
 
 	private static final long serialVersionUID = 1L;
@@ -79,5 +79,6 @@ public class MainFrame extends JFrame {
         });
         takeButton.setBounds(280, 320, 86, 27); 
         contentPane.add(takeButton);
+        
 	}
 }
