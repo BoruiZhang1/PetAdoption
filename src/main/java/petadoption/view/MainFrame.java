@@ -7,20 +7,28 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
 public class MainFrame extends JFrame {
 	
-	
-
+	// declare UI button 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	private JTable petsTable;
+	private JButton addButton;
+	private JButton adoptButton;
+	private JButton removeButton;
+	private JButton viewButton;
+	private JButton saveButton;
+	private JComboBox<String> sortComboBox;
 
 	/**
+	 * come with window builder
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -39,46 +47,55 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(null);
-		setContentPane(contentPane);
+	public MainFrame() 
+	{
 		
-		setTitle("Pet Adoption Website");
-		setBounds(300,100,500,400);
-
+		setTitle("Pet Adoption Center");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(600,400);
+		setLayout(new BorderLayout());
+		
+		petsTable = new JTable();
+		JScrollPane tableScrollPane = new JScrollPane(petsTable);
+		add(tableScrollPane, BorderLayout.CENTER);
 		
 		
-		JButton addButton = new JButton("Add Pet");
-        addButton.setBounds(10, 320, 77, 27); 
-        getContentPane().add(addButton);
-        
-        JButton adoptButton = new JButton("Adopt Pet");
-        adoptButton.setBounds(184, 320, 86, 27); 
-        contentPane.add(adoptButton);
-        
-        JButton removeButton = new JButton("Remove Pet");
-        removeButton.setBounds(376, 320, 98, 27); 
-        contentPane.add(removeButton);
-        
-        JButton viewButton = new JButton("View Pet");
-        viewButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        viewButton.setBounds(97, 320, 77, 27); 
-        contentPane.add(viewButton);
-        
-        JButton takeButton = new JButton("Save Pet");
-        takeButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        takeButton.setBounds(280, 320, 86, 27); 
-        contentPane.add(takeButton);
-        
-	}
+		// adding buttons and change the text 
+		JPanel buttonPanel = new JPanel();
+		addButton = new JButton("Add Pet");
+		adoptButton = new JButton("Adopt Pet");
+		removeButton = new JButton("Remove Pet");
+		viewButton = new JButton("View Pets");
+		saveButton = new JButton("Save Pet");
+		
+		buttonPanel.add(addButton);
+		buttonPanel.add(adoptButton);
+		buttonPanel.add(removeButton);
+		buttonPanel.add(viewButton);
+		buttonPanel.add(saveButton);
+		
+		add(buttonPanel, BorderLayout.SOUTH);
+		}
+		
+		public void addActionListeneraddButton(ActionListener listener)
+		{
+			addButton.addActionListener(listener);
+		}
+		public void addActionListeneradoptButton(ActionListener listener)
+		{
+			addButton.addActionListener(listener);
+		}
+		public void addActionListenerremoveButton(ActionListener listener)
+		{
+			addButton.addActionListener(listener);
+		}
+		public void addActionListenerviewButton(ActionListener listener)
+		{
+			addButton.addActionListener(listener);
+		}
+		public void addActionListenersaveButton(ActionListener listener)
+		{
+			addButton.addActionListener(listener);
+		}
+	
 }
