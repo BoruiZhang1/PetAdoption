@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import petadoption.model.Pet;
 import petadoption.model.Shelter;
 import petadoption.model.ExoticAnimal;
+import petadoption.model.ExoticAnimalAdapter;
 
 import java.io.*;
 import java.util.*;
@@ -25,6 +26,19 @@ public class PetDataManager {
 		{
 			Shelter<Pet> shelter = new Shelter<Pet>();
 			
+			List<Pet> pets = loadNormal();
+			for(Pet pet : pets)
+			{
+				shelter.addPet(pet);
+			}
+			
+			List<ExoticAnimal> exoticAnimals = loadExotic();
+			for(ExoticAnimal exoticAnimal : exoticAnimals)
+			{
+				shelter.addPet(new ExoticAnimalAdapter(exoticAnimal));
+			}
+			
+			return shelter;
 			
 		}
 	
@@ -37,11 +51,12 @@ public class PetDataManager {
 		{
 			List<Pet> pets = new ArrayList<Pet>();
 			String path = getClass().getResource("/pets.json").getFile();
-			try
+			try(BufferedReader br = new BufferedReader(new FileReader(path)))
 			{
-				BufferedReader br = new BufferedReader(new FileReader(path));
-				List<>
+				
+				
 			}
+			return pets;
 		}
 		
 		private List<ExoticAnimal> loadExotic() throws IOException
