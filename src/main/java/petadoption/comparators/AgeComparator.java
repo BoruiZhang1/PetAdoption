@@ -11,7 +11,7 @@ public class AgeComparator implements Comparator<Pet>{
      * 
      * @param p1 the first Pet object to be compared
      * @param p2 the second Pet object to be compared
-     * @return a negative integer, zero, or a positive integer if the age of 
+     * @return a negative integer, zero, or a positive integer if the age is 
      *         less than, equal to, or greater than the age of 
      *         the second Pet
      */
