@@ -9,6 +9,16 @@ public class ExoticAnimal {
     private int yearsOld;
     private boolean isAvailable;
     
+    /**
+     * Constructs a new ExoticAnimal object with the specified uniqueId, animalName, 
+     * category, subSpecies, and yearsOld. The animal is initially marked as available.
+     * 
+     * @param uniqueId the unique id for the exotic animal
+     * @param animalName the name of the exotic animal
+     * @param category the category of the animal
+     * @param subSpecies the sub species of the exotic animal
+     * @param yearsOld the age of the exotic animal
+     */
     public ExoticAnimal(String uniqueId, String animalName, String category, String subSpecies, int yearsOld) {
 		super();
 		this.uniqueId = uniqueId;
@@ -67,6 +77,9 @@ public class ExoticAnimal {
 		this.isAvailable = isAvailable;
 	}
 
+	/**
+	 * Marks the exotic animal as adopted by changing availability status to false.
+	 */
 	public void markAsAdopted() {
 		this.isAvailable = false;
 	}
