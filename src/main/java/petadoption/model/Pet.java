@@ -9,6 +9,16 @@ public abstract class Pet implements Comparable<Pet>{
 	private int age;
 	private boolean adopted;
 	
+	/**
+     * Constructs a new Pet object with the specified id, name, type, species, and age.
+     * The pet is initially not adopted.
+     * 
+     * @param id the unique id for the pet
+     * @param name the name of the pet
+     * @param type the type of the pet
+     * @param species the species of the pet
+     * @param age the age of the pet
+     */
 	public Pet(int id, String name, String type, String species, int age) {
 		super();
 		this.id = id;
@@ -67,6 +77,11 @@ public abstract class Pet implements Comparable<Pet>{
 		this.adopted = adopted;
 	}
 	
+	/**
+	 * Adopts a pet by changing its adoption status.
+	 * 
+	 * @return true if the pet was adopted or false if the pet is already adopted
+	 */
 	public boolean adopt() {
 		if(!adopted) {
 			adopted = true;
@@ -75,6 +90,13 @@ public abstract class Pet implements Comparable<Pet>{
 		return false;
 	}
 	
+	/**
+     * Compares this pet to another pet based on their name.
+     * 
+     * @param other the pet to compare to
+     * @return a negative integer, zero, or a positive integer if this pets name 
+     *         is less than, equal to, or greater than the other pets name
+     */
 	@Override
     public int compareTo(Pet other) {
         return this.name.compareToIgnoreCase(other.getName());
