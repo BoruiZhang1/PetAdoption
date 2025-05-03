@@ -52,7 +52,7 @@ public class MainFrame extends JFrame {
 
 		
 		
-		JButton addButton = new JButton("Add pet");
+		JButton addButton = new JButton("Add Pet");
         addButton.setBounds(10, 320, 77, 27); 
         getContentPane().add(addButton);
         
@@ -64,7 +64,7 @@ public class MainFrame extends JFrame {
         removeButton.setBounds(376, 320, 98, 27); 
         contentPane.add(removeButton);
         
-        JButton viewButton = new JButton("View pet");
+        JButton viewButton = new JButton("View Pet");
         viewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	}
@@ -72,7 +72,7 @@ public class MainFrame extends JFrame {
         viewButton.setBounds(97, 320, 77, 27); 
         contentPane.add(viewButton);
         
-        JButton takeButton = new JButton("Take in Pet");
+        JButton takeButton = new JButton("Save Pet");
         takeButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	}
