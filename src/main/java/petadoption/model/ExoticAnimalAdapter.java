@@ -38,6 +38,15 @@ public class ExoticAnimalAdapter extends Pet {
         return status;
     }
 	
+	/*
+	 * using the function to server as a connection between the pet class's and 
+	 * adoption status in the exoticAnimal class's
+	 */
+	public void setAdopted(boolean adopted)
+	{
+		super.setAdopted(adopted);
+		exoticAnimal.setAvailable(!adopted);
+	}
 	
 	
 	public ExoticAnimal getExoticAnimal() {
