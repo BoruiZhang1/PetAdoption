@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import petadoption.data.PetDTO.PetJson;
 import petadoption.model.Cat;
 import petadoption.model.Dog;
+import petadoption.model.ExoticAnimal;
 import petadoption.model.Pet;
 import petadoption.model.Rabbit;
 
@@ -18,6 +19,10 @@ public class PetJsonSerializer {
 
 	private Gson gson = new Gson();
 	
+	/** JSON -> Pet
+	 * @param reader has the data in JSON format
+	 * @return in the format as the list of pet objs
+	 */
 	public List<Pet> jsonToPets(Reader reader)
 	{
 		Type listType = new TypeToken<ArrayList<PetJson>>(){}.getType();
@@ -50,6 +55,17 @@ public class PetJsonSerializer {
 			}	
 		}
 		return pets;
+	}
+	
+	
+	/** JSON -> ExoticAnimal
+	 * @param reader has the data in JSON format
+	 * @return in the format as the list of ExoticAnimal objs
+	 */
+	public List<ExoticAnimal> jsonToExotic(Reader reader)
+	{
+		 Type listType = new TypeToken<ArrayList<ExoticAnimal>>(){}.getType();
+		 return gson.fromJson(reader, listType);
 	}
 	
 	
