@@ -80,6 +80,16 @@ public class ViewPetDialog extends JDialog {
 		gbc.gridx = 1;
 		contentPanel.add(nameLabel, gbc);
 		
+		// Row 2
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		contentPanel.add(ageTitle, gbc);
+		
+		gbc.gridx = 1;
+		contentPanel.add(ageLabel, gbc);
+		
+		
+		
 	}
 	
 	
