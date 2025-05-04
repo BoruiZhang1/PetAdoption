@@ -8,7 +8,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import petadoption.data.PetJson;
+import petadoption.model.Animal;
 import petadoption.model.Cat;
 import petadoption.model.Dog;
 import petadoption.model.ExoticAnimal;
