@@ -57,6 +57,13 @@ public class AddPetDialog extends JDialog {
 		String[] petTypes = {"Dog", "Cat", "Rabbit", "Other"};
 		typeComboBox = new JComboBox<>(petTypes);
 		
+		JLabel speciesLabel = new JLabel("Species/Breed:");
+		speciesField = new JTextField(20);
+		
+		JLabel ageLabel = new JLabel("Age:");
+		ageField = new JTextField(5);
+		
+		
 		
 	}
 
