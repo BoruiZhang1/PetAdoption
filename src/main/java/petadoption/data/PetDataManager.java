@@ -1,9 +1,11 @@
-// https://howtodoinjava.com/gson/gson-serialize-deserialize-hashmap/ <-- helped SO MUCH Lokesh Gupta is goated
+// https://howtodoinjava.com/gson/gson-serialize-deserialize-hashmap/  good for understanding wtf gson is doing
+//https://howtodoinjava.com/gson/gson/#5-custom-serialization-and-deserialization is what I tried to replicate
 
 
 package petadoption.data;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSerializationContext;
 import com.google.gson.reflect.TypeToken;
 
 import petadoption.model.Pet;
@@ -18,13 +20,9 @@ import org.ietf.jgss.GSSException;
 
 public class PetDataManager {
 	
-		private Gson gson;
+		private PetJsonSerializer pjs = new PetJsonSerializer();
 		
-		public PetDataManager()
-		{
-			this.gson = new Gson();
-		}
-	
+		
 		public Shelter<Pet> loadPetData() throws IOException
 		{
 			Shelter<Pet> shelter = new Shelter<Pet>();
@@ -50,16 +48,16 @@ public class PetDataManager {
 			
 		}
 		
-//		private List<Pet> loadNormal() throws IOException
-//		{
-//			List<Pet> pets = new ArrayList<Pet>();
-//			String path = getClass().getResource("/pets.json").getFile();
-//			try(BufferedReader br = new BufferedReader(new FileReader(path)))
-//			{
-//				
-//				
-//			}
-//		}
+		private List<Pet> loadNormal() throws IOException
+		{
+			List<Pet> pets = new ArrayList<Pet>();
+			String path = getClass().getResource("/pets.json").getFile();
+			try(BufferedReader br = new BufferedReader(new FileReader(path)))
+			{
+				return pjs.jsonToPets(br);
+				
+			}
+		}
 		
 //		private List<ExoticAnimal> loadExotic() throws IOException
 //		{
