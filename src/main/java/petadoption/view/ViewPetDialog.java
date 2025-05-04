@@ -57,7 +57,7 @@ public class ViewPetDialog extends JDialog {
 		JLabel speciesTitle = new JLabel("Species/Breed:");
 		speciesLabel = new JLabel();
 		
-		JLabel adeoptedTitle = new JLabel("Status:");
+		JLabel adoptedTitle = new JLabel("Status:");
 		adoptedLabel = new JLabel();
 		
 		// add components to panel
@@ -100,7 +100,7 @@ public class ViewPetDialog extends JDialog {
      // Row 5
         gbc.gridx = 0;
         gbc.gridy = 4;
-        contentPanel.add(adoptedLabel, gbc);
+        contentPanel.add(adoptedTitle, gbc);
         
         gbc.gridx = 1;
         contentPanel.add(adoptedLabel, gbc);
