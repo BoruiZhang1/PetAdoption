@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -15,98 +16,135 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+import petadoption.model.Pet;
+
 public class ViewPetDialog extends JDialog {
 	
-	private JLabel name;
-    private JLabel age;
-    private JLabel species;
-    private JLabel breed;
-    private JTextArea descriptionArea;
+	private JLabel nameLabel;
+    private JLabel ageLabel;
+    private JLabel typeLabel;
+    private JLabel speciesLabel;
     private JLabel adoptedLabel;
     private JButton closeButton;
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			ViewPetDialog dialog = new ViewPetDialog();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
 	 */
 	public ViewPetDialog() 
 	{
-		name = new JLabel();
-		age = new JLabel();
-		species = new JLabel();
-		breed = new JLabel();
-		descriptionArea = new JTextArea(5,30);
-		descriptionArea.setEditable(false);
-		descriptionArea.setLineWrap(true);
-		descriptionArea.setWrapStyleWord(true);
+
+		setTitle("Pet Details");
+		setBounds(100, 100, 400, 300);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(10,10,10,10));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(new GridBagLayout());
+		
+		// Create components
+		JLabel nameTitle = new JLabel("Name;");
+		nameLabel = new JLabel();
+		
+		JLabel ageTitle = new JLabel("Age:");
+		ageLabel = new JLabel();
+		
+		JLabel typeTitle = new JLabel("Type:");
+		typeLabel = new JLabel();
+		
+		JLabel speciesTitle = new JLabel("Species/Breed:");
+		speciesLabel = new JLabel();
+		
+		JLabel adeoptedTitle = new JLabel("Status:");
 		adoptedLabel = new JLabel();
-		adoptedLabel.setForeground(Color.red);
-		closeButton = new JButton("Close");
+		
+		// add components to panel
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.anchor = GridBagConstraints.WEST;
+		
+		// Row 1
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		contentPanel.add(nameTitle, gbc);
+		
+		gbc.gridx = 1;
+		contentPanel.add(nameLabel, gbc);
+		
+		// Row 2
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		contentPanel.add(ageTitle, gbc);
+		
+		gbc.gridx = 1;
+		contentPanel.add(ageLabel, gbc);
+		
+		// Row 3
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		contentPanel.add(typeTitle, gbc);
+		
+		gbc.gridx = 1;
+		contentPanel.add(typeLabel, gbc);
+		
+		// Row 4
+		gbc.gridx = 0;
+        gbc.gridy = 3;
+        contentPanel.add(speciesTitle, gbc);
+        
+        gbc.gridx = 1;
+        contentPanel.add(speciesLabel, gbc);
+        
+     // Row 5
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        contentPanel.add(adoptedLabel, gbc);
+        
+        gbc.gridx = 1;
+        contentPanel.add(adoptedLabel, gbc);
+        
+        // Button Panel
+        JPanel buttonPane = new JPanel();
+        buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        getContentPane().add(buttonPane, BorderLayout.SOUTH);
+        
+        closeButton = new JButton("Close");
+        buttonPane.add(closeButton);
+        getRootPane().setDefaultButton(closeButton);
+        
+        // add action to the close button
+        closeButton.addActionListener(e -> dispose());
+        
+        setModal(true);
+        setLocationRelativeTo(null);
+        
 		
 	}
 	
-	private void layoutComponents()
+	/**
+	 * sets the detail of the pet their name and all the other attribute
+	 * 
+	 * @param pet to display
+	 */
+	
+	public void setPet(Pet pet)
 	{
-		JPanel panel = new JPanel(new GridBagLayout());
-		GridBagConstraints table = new GridBagConstraints();
-		table.insets = new Insets(5, 5, 5, 5);
-		table.anchor = GridBagConstraints.WEST;
-		table.fill = GridBagConstraints.HORIZONTAL;
-		
-		// Row 0
-		table.gridx = 0;
-		table.gridy = 0;
-		panel.add(new JLabel("Name: "), table);
-		
-		table.gridx = 1;
-		panel.add(name, table);
-		
-		// Row 1
-		table.gridx = 0;
-		table.gridy = 1;
-		panel.add(new JLabel("Age:"), table);
-		
-		table.gridx = 1;
-		panel.add(age, table);
-		
-		// Row 2
-		table.gridx = 0;
-		table.gridy = 2;
-		panel.add(new JLabel("Species:"), table);
-		
-		table.gridx = 1;
-		panel.add(species, table);
-		
-		// Row 3
-		table.gridx = 0;
-		table.gridy = 3;
-		panel.add(new JLabel("Breed:"), table);
-		
-		table.gridx = 1;
-		panel.add(breed, table);
-		
-		// Row 4
-		table.gridx = 0;
-		table.gridy = 4;
-		panel.add(new JLabel("Description:"), table);
-				
-		table.gridx = 1;
-		panel.add(new JScrollPane(descriptionArea), table);
+		nameLabel.setText(pet.getName());
+		ageLabel.setText(String.valueOf(pet.getAge()));
+		typeLabel.setText(pet.getType());
+		speciesLabel.setText(pet.getSpecies());
+		if(pet.isAdopted())
+		{
+			adoptedLabel.setText("Adopted");
+			adoptedLabel.setForeground(Color.red);
+		}
+		else
+		{
+			adoptedLabel.setText("Available");
+			adoptedLabel.setForeground(Color.GREEN);
+		}
 	}
-
+	
 }
