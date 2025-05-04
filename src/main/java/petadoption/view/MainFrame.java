@@ -12,7 +12,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 public class MainFrame extends JFrame {
@@ -25,7 +24,8 @@ public class MainFrame extends JFrame {
 	private JButton removeButton;
 	private JButton viewButton;
 	private JButton saveButton;
-	private JComboBox<String> sortComboBox;
+	// declare combobox for sorting pets
+	private JComboBox<String> sortComboBox = new JComboBox<>(new String[]{"Name", "Age", "Species"});;
 
 	/**
 	 * come with window builder
@@ -68,34 +68,55 @@ public class MainFrame extends JFrame {
 		viewButton = new JButton("View Pets");
 		saveButton = new JButton("Save Pet");
 		
+		// adding button to the table
 		buttonPanel.add(addButton);
 		buttonPanel.add(adoptButton);
 		buttonPanel.add(removeButton);
 		buttonPanel.add(viewButton);
 		buttonPanel.add(saveButton);
 		
+		
 		add(buttonPanel, BorderLayout.SOUTH);
 		}
+	
+		public void setTableModel(DefaultTableModel model)
+		{
+			petsTable.setModel(model);
+		}
+
+		public DefaultTableModel getTableModel() 
+		{
+		return (DefaultTableModel) petsTable.getModel();
+		}
+
+		public int getSelectedPetRow()
+		{
+	    return petsTable.getSelectedRow();
+		}
 		
+		// action listsener for all the buttons
 		public void addActionListeneraddButton(ActionListener listener)
 		{
 			addButton.addActionListener(listener);
 		}
 		public void addActionListeneradoptButton(ActionListener listener)
 		{
-			addButton.addActionListener(listener);
+			adoptButton.addActionListener(listener);
 		}
 		public void addActionListenerremoveButton(ActionListener listener)
 		{
-			addButton.addActionListener(listener);
+			removeButton.addActionListener(listener);
 		}
 		public void addActionListenerviewButton(ActionListener listener)
 		{
-			addButton.addActionListener(listener);
+			viewButton.addActionListener(listener);
 		}
 		public void addActionListenersaveButton(ActionListener listener)
 		{
-			addButton.addActionListener(listener);
+			saveButton.addActionListener(listener);
+		}
+		public void addSortComboBoxListener(ActionListener listener) {
+		    sortComboBox.addActionListener(listener);
 		}
 	
 }
