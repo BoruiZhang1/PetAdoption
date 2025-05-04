@@ -4,15 +4,25 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class AddPetDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-
+	
+	private JTextField nameField;
+	private JComboBox<String> typeComboBox;
+	private JTextField speciesField;
+	private JTextField ageField;
+	private JButton okButton;
+	private JButton cancelButton;
+	
+	
 	/**
 	 * Launch the application.
 	 */
