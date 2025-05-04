@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
@@ -59,6 +60,53 @@ public class ViewPetDialog extends JDialog {
 		
 	}
 	
-	
+	private void layoutComponents()
+	{
+		JPanel panel = new JPanel(new GridBagLayout());
+		GridBagConstraints table = new GridBagConstraints();
+		table.insets = new Insets(5, 5, 5, 5);
+		table.anchor = GridBagConstraints.WEST;
+		table.fill = GridBagConstraints.HORIZONTAL;
+		
+		// Row 0
+		table.gridx = 0;
+		table.gridy = 0;
+		panel.add(new JLabel("Name: "), table);
+		
+		table.gridx = 1;
+		panel.add(name, table);
+		
+		// Row 1
+		table.gridx = 0;
+		table.gridy = 1;
+		panel.add(new JLabel("Age:"), table);
+		
+		table.gridx = 1;
+		panel.add(age, table);
+		
+		// Row 2
+		table.gridx = 0;
+		table.gridy = 2;
+		panel.add(new JLabel("Species:"), table);
+		
+		table.gridx = 1;
+		panel.add(species, table);
+		
+		// Row 3
+		table.gridx = 0;
+		table.gridy = 3;
+		panel.add(new JLabel("Breed:"), table);
+		
+		table.gridx = 1;
+		panel.add(breed, table);
+		
+		// Row 4
+		table.gridx = 0;
+		table.gridy = 4;
+		panel.add(new JLabel("Description:"), table);
+				
+		table.gridx = 1;
+		panel.add(new JScrollPane(descriptionArea), table);
+	}
 
 }
