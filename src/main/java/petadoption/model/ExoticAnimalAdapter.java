@@ -1,5 +1,9 @@
 package petadoption.model;
 
+
+
+
+//funnily enough when we started with the 
 public class ExoticAnimalAdapter extends Pet {
 
 	private ExoticAnimal exoticAnimal;

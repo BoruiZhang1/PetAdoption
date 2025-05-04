@@ -1,6 +1,7 @@
 package petadoption.data;
 
 import java.io.Reader;
+import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +73,28 @@ public class PetJsonSerializer {
 	}
 	
 	
-	
+	/**
+	 * @param pets pet objs that will be converted to json
+	 * @param writer writes to json format
+	 */
+	public void petsToJson(List<Pet> pets, Writer writer) {
+        List<PetJson> petJsonList = new ArrayList<>();
+        
+        for (Pet pet : pets) {
+           
+                PetJson json = new PetJson();
+                json.id = pet.getId();
+                json.name = pet.getName();
+                json.type = pet.getType();
+                json.species = pet.getSpecies();
+                json.age = pet.getAge();
+                json.adopted = pet.isAdopted();
+                petJsonList.add(json);
+           
+        }
+        
+        gson.toJson(petJsonList, writer);
+    }
 	
 	
 	
