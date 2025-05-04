@@ -46,11 +46,11 @@ public class AddPetDialog extends JDialog {
 	public AddPetDialog() 
 	{
 		setTitle("Add New Pet");
-		setBounds(100, 100, 450, 250);
-		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new GridBagLayout());
-		contentPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+        setBounds(100, 100, 400, 250);
+        getContentPane().setLayout(new BorderLayout());
+        contentPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        getContentPane().add(contentPanel, BorderLayout.CENTER);
+        contentPanel.setLayout(new GridBagLayout());
 		
 		// create Labels 
 		JLabel nameLabel = new JLabel("Name:");
@@ -110,6 +110,30 @@ public class AddPetDialog extends JDialog {
 	     gbc.fill = GridBagConstraints.HORIZONTAL;
 	     contentPanel.add(ageField, gbc);
 		
+	     // Button for adding and cancel
+	     JPanel buttonPane = new JPanel();
+	     buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+	     getContentPane().add(buttonPane, BorderLayout.SOUTH);
+	     
+	     okButton = new JButton("OK");
+	     okButton.setActionCommand("OK");
+	     buttonPane.add(okButton);
+	     getRootPane().setDefaultButton(okButton);
+	     
+	     cancelButton = new JButton("Cancel");
+	     cancelButton.setActionCommand("Cancel");
+	     buttonPane.add(cancelButton);
+	     
+	     // adding action to the button to close the current window
+	     cancelButton.addActionListener(e -> dispose());
+	     
+	     setModal(true);
+	     setLocationRelativeTo(null);
+	     
+	     
 	}
+	
+	
+
 
 }
