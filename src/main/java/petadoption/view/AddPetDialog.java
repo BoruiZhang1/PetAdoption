@@ -3,6 +3,7 @@ package petadoption.view;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JButton;
@@ -47,7 +48,7 @@ public class AddPetDialog extends JDialog {
 		setTitle("Add New Pet");
 		setBounds(100, 100, 450, 250);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
+		contentPanel.setLayout(new GridBagLayout());
 		contentPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		
@@ -73,13 +74,41 @@ public class AddPetDialog extends JDialog {
 		// Row 1 for the animal label
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		contentPanel.add(nameLabel);
+		contentPanel.add(nameLabel, gbc);
 		
 		gbc.gridx = 1;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		contentPanel.add(nameField, gbc);
 		
+		// Row 2 for animal type 
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.fill = GridBagConstraints.NONE;
+		contentPanel.add(typeLabel, gbc);
 		
+		gbc.gridx = 1;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		contentPanel.add(typeComboBox, gbc);
+		
+		// Row 3 for species of animal 
+		 gbc.gridx = 0;
+	     gbc.gridy = 2;
+	     gbc.fill = GridBagConstraints.NONE;
+	     contentPanel.add(speciesLabel, gbc);
+	        
+	     gbc.gridx = 1;
+	     gbc.fill = GridBagConstraints.HORIZONTAL;
+	     contentPanel.add(speciesField, gbc);
+		
+	     // Row 4 for making the age of the animal
+	     gbc.gridx = 0;
+	     gbc.gridy = 3;
+	     gbc.fill = GridBagConstraints.NONE;
+	     contentPanel.add(ageLabel, gbc);
+	        
+	     gbc.gridx = 1;
+	     gbc.fill = GridBagConstraints.HORIZONTAL;
+	     contentPanel.add(ageField, gbc);
 		
 	}
 
