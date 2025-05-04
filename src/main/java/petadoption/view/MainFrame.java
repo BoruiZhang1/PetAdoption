@@ -2,16 +2,17 @@ package petadoption.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import java.awt.event.ActionListener;
 
 
 public class MainFrame extends JFrame {
@@ -19,14 +20,13 @@ public class MainFrame extends JFrame {
 	// declare UI button 
 	private static final long serialVersionUID = 1L;
 	private JTable petsTable;
-	private JButton addButton;
-	private JButton adoptButton;
-	private JButton removeButton;
-	private JButton viewButton;
-	private JButton saveButton;
-	// declare combobox for sorting pets
-	private JComboBox<String> sortComboBox = new JComboBox<>(new String[]{"Name", "Age", "Species"});;
-
+    private JButton addButton;
+    private JButton adoptButton;
+    private JButton removeButton;
+    private JButton viewButton;
+    private JButton saveButton;
+    public JComboBox<String> sortComboBox;
+	
 	/**
 	 * come with window builder
 	 * Launch the application.
@@ -52,15 +52,22 @@ public class MainFrame extends JFrame {
 		
 		setTitle("Pet Adoption Center");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(600,400);
-		setLayout(new BorderLayout());
+        setSize(800, 500);
+        setLayout(new BorderLayout());
 		
-		petsTable = new JTable();
-		JScrollPane tableScrollPane = new JScrollPane(petsTable);
-		add(tableScrollPane, BorderLayout.CENTER);
+        // Top panel for sorting
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        topPanel.add(new JLabel("Sort by:"));
+        sortComboBox = new JComboBox<>(new String[]{"Name", "Age", "Species"});
+        topPanel.add(sortComboBox);
+        add(topPanel, BorderLayout.NORTH);
+        
+        // Center panel for pet table
+        petsTable = new JTable();
+        JScrollPane tableScrollPane = new JScrollPane(petsTable);
+        add(tableScrollPane, BorderLayout.CENTER);
 		
-		
-		// adding buttons and change the text 
+		// adding buttons and change the text of the field
 		JPanel buttonPanel = new JPanel();
 		addButton = new JButton("Add Pet");
 		adoptButton = new JButton("Adopt Pet");
@@ -77,6 +84,8 @@ public class MainFrame extends JFrame {
 		
 		
 		add(buttonPanel, BorderLayout.SOUTH);
+		
+		setLocationRelativeTo(null);
 		}
 	
 		public void setTableModel(DefaultTableModel model)
@@ -93,6 +102,11 @@ public class MainFrame extends JFrame {
 		{
 	    return petsTable.getSelectedRow();
 		}
+		
+		public String getSortOption() 
+		{
+	        return (String) sortComboBox.getSelectedItem();
+	    }
 		
 		// action listsener for all the buttons
 		public void addActionListeneraddButton(ActionListener listener)
