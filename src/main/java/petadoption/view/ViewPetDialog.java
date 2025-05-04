@@ -124,6 +124,12 @@ public class ViewPetDialog extends JDialog {
         buttonPane.add(closeButton);
         getRootPane().setDefaultButton(closeButton);
         
+        // add action to the close button
+        closeButton.addActionListener(e -> dispose());
+        
+        setModal(true);
+        setLocationRelativeTo(null);
+        
 		
 	}
 	
