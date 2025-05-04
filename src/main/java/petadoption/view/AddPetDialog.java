@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -171,6 +172,10 @@ public class AddPetDialog extends JDialog {
 			typeComboBox.setSelectedIndex(0);
 			speciesField.setText("");
 			ageField.setText("");
+		}
+		
+		public void addOkButtonListener(ActionListener listener) {
+		    okButton.addActionListener(listener);
 		}
 
 }
