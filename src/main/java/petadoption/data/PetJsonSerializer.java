@@ -8,7 +8,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import petadoption.data.PetDTO.PetJson;
+import petadoption.data.PetJson;
 import petadoption.model.Cat;
 import petadoption.model.Dog;
 import petadoption.model.ExoticAnimal;
@@ -32,18 +32,21 @@ public class PetJsonSerializer {
 		for (PetJson json : petJsonList) 
 		{
 			Pet pet = null; 
-			if ("Dog".equals(json.type))
-			{
-				pet = new Dog(json.id, json.name, json.species, json.age);
-			}
-			else if ("Cat".equals(json.type))
-			{
-				pet = new Cat(json.id, json.name, json.species, json.age);
-			}
-			else if ("Rabbit".equals(json.type))
-			{
-				pet = new Rabbit(json.id, json.name, json.species, json.age);
-			}
+			 switch(json.type) {
+             case "Dog":
+                 pet = new Dog(json.id, json.name, json.species, json.age);
+                 break;
+             case "Cat":
+                 pet = new Cat(json.id, json.name, json.species, json.age);
+                 break;
+             case "Rabbit":
+                 pet = new Rabbit(json.id, json.name, json.species, json.age);
+                 break;
+             default:
+                 // For any other animal type, use the general Animal class
+                 pet = new Animal(json.id, json.name, json.type, json.species, json.age);
+                 break;
+         }
 			
 			if(pet != null)
 			{
