@@ -1,7 +1,11 @@
 package petadoption.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -12,10 +16,10 @@ import javax.swing.border.EmptyBorder;
 
 public class ViewPetDialog extends JDialog {
 	
-	private JLabel nameLabel;
-    private JLabel ageLabel;
-    private JLabel speciesLabel;
-    private JLabel breedLabel;
+	private JLabel name;
+    private JLabel age;
+    private JLabel species;
+    private JLabel breed;
     private JTextArea descriptionArea;
     private JLabel adoptedLabel;
     private JButton closeButton;
@@ -41,12 +45,20 @@ public class ViewPetDialog extends JDialog {
 	 */
 	public ViewPetDialog() 
 	{
-		nameLabel = new JLabel();
-		ageLabel = new JLabel();
-		speciesLabel = new JLabel();
-		breedLabel = new JLabel();
+		name = new JLabel();
+		age = new JLabel();
+		species = new JLabel();
+		breed = new JLabel();
 		descriptionArea = new JTextArea(5,30);
+		descriptionArea.setEditable(false);
+		descriptionArea.setLineWrap(true);
+		descriptionArea.setWrapStyleWord(true);
+		adoptedLabel = new JLabel();
+		adoptedLabel.setForeground(Color.red);
+		closeButton = new JButton("Close");
 		
 	}
+	
+	
 
 }
