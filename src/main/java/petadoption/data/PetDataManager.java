@@ -1,3 +1,6 @@
+// https://howtodoinjava.com/gson/gson-serialize-deserialize-hashmap/ <-- helped SO MUCH Lokesh Gupta is goated
+
+
 package petadoption.data;
 
 import com.google.gson.Gson;
@@ -47,25 +50,26 @@ public class PetDataManager {
 			
 		}
 		
-		private List<Pet> loadNormal() throws IOException
-		{
-			List<Pet> pets = new ArrayList<Pet>();
-			String path = getClass().getResource("/pets.json").getFile();
-			try(BufferedReader br = new BufferedReader(new FileReader(path)))
-			{
-				
-				
-			}
-			return pets;
-		}
+//		private List<Pet> loadNormal() throws IOException
+//		{
+//			List<Pet> pets = new ArrayList<Pet>();
+//			String path = getClass().getResource("/pets.json").getFile();
+//			try(BufferedReader br = new BufferedReader(new FileReader(path)))
+//			{
+//				
+//				
+//			}
+//		}
 		
-		private List<ExoticAnimal> loadExotic() throws IOException
-		{
-			String path = getClass().getResource("/exotic_animals.json").getFile();
-			try(BufferedReader br = new BufferedReader(new FileReader(path)))
-			{
-				return gson.fromJson(br, new TypeToken<List<ExoticAnimal>>() {}.getType());
-			}
-			
-		}
+//		private List<ExoticAnimal> loadExotic() throws IOException
+//		{
+//			String path = getClass().getResource("/exotic_animals.json").getFile();
+//			try(BufferedReader br = new BufferedReader(new FileReader(path)))
+//			{
+//				return gson.fromJson(br, new TypeToken<List<ExoticAnimal>>() {}.getType());
+//			}
+//			
+//		}
+		
+	
 }
