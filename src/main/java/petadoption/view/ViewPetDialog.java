@@ -114,6 +114,16 @@ public class ViewPetDialog extends JDialog {
         
         gbc.gridx = 1;
         contentPanel.add(adoptedLabel, gbc);
+        
+        // Button Panel
+        JPanel buttonPane = new JPanel();
+        buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        getContentPane().add(buttonPane, BorderLayout.SOUTH);
+        
+        closeButton = new JButton("Close");
+        buttonPane.add(closeButton);
+        getRootPane().setDefaultButton(closeButton);
+        
 		
 	}
 	
