@@ -14,14 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
 
 public class ViewPetDialog extends JDialog {
 	
-	private JLabel name;
-    private JLabel age;
-    private JLabel species;
-    private JLabel breed;
-    private JTextArea descriptionArea;
+	private JLabel nameLabel;
+    private JLabel ageLabel;
+    private JLabel typeLabel;
+    private JLabel speciesLabel;
     private JLabel adoptedLabel;
     private JButton closeButton;
 
@@ -46,6 +46,18 @@ public class ViewPetDialog extends JDialog {
 	 */
 	public ViewPetDialog() 
 	{
+
+		setTitle("Pet Details");
+		setBounds(100, 100, 400, 300);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(10,10,10,10));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(new GridBagLayout());
+		
+	}
+	
+	private void initializeComponents()
+	{
 		name = new JLabel();
 		age = new JLabel();
 		species = new JLabel();
@@ -53,82 +65,76 @@ public class ViewPetDialog extends JDialog {
 		descriptionArea = new JTextArea(5,30);
 		descriptionArea.setEditable(false);
 		descriptionArea.setLineWrap(true);
-		descriptionArea.setWrapStyleWord(true);
 		adoptedLabel = new JLabel();
 		adoptedLabel.setForeground(Color.red);
 		closeButton = new JButton("Close");
-		setTitle("Pet Details");
-		setModal(true);
-		setSize(500,400);
-		
-		
-		
 	}
+	
 	
 	private void layoutComponents()
 	{
 		JPanel panel = new JPanel(new GridBagLayout());
-		GridBagConstraints table = new GridBagConstraints();
-		table.insets = new Insets(5, 5, 5, 5);
-		table.anchor = GridBagConstraints.WEST;
-		table.fill = GridBagConstraints.HORIZONTAL;
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
 		
 		// Row 0
-		table.gridx = 0;
-		table.gridy = 0;
-		panel.add(new JLabel("Name: "), table);
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		panel.add(new JLabel("Name:"), gbc);
 		
-		table.gridx = 1;
-		panel.add(name, table);
+		gbc.gridx = 1;
+		panel.add(name, gbc);
 		
 		// Row 1
-		table.gridx = 0;
-		table.gridy = 1;
-		panel.add(new JLabel("Age:"), table);
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		panel.add(new JLabel("Age:"), gbc);
 		
-		table.gridx = 1;
-		panel.add(age, table);
+		gbc.gridx = 1;
+		panel.add(age, gbc);
 		
 		// Row 2
-		table.gridx = 0;
-		table.gridy = 2;
-		panel.add(new JLabel("Species:"), table);
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		panel.add(new JLabel("Species:"), gbc);
 		
-		table.gridx = 1;
-		panel.add(species, table);
+		gbc.gridx = 1;
+		panel.add(species, gbc);
 		
 		// Row 3
-		table.gridx = 0;
-		table.gridy = 3;
-		panel.add(new JLabel("Breed:"), table);
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		panel.add(new JLabel("Breed:"), gbc);
 		
-		table.gridx = 1;
-		panel.add(breed, table);
+		gbc.gridx = 1;
+		panel.add(breed, gbc);
 		
 		// Row 4
-		table.gridx = 0;
-		table.gridy = 4;
-		panel.add(new JLabel("Description:"), table);
+		gbc.gridx = 0;
+		gbc.gridy = 4;
+		panel.add(new JLabel("Description:"), gbc);
 				
-		table.gridx = 1;
-		panel.add(new JScrollPane(descriptionArea), table);
+		gbc.gridx = 1;
+		panel.add(new JScrollPane(descriptionArea), gbc);
 		
 		// Row 5
-		table.gridx = 0;
-		table.gridy = 5;
-		table.gridwidth = 2;
-		table.anchor = GridBagConstraints.CENTER;
-		panel.add(adoptedLabel, table);
+		gbc.gridx = 0;
+		gbc.gridy = 5;
+		gbc.gridwidth = 2;
+		gbc.anchor = GridBagConstraints.CENTER;
+		panel.add(adoptedLabel, gbc);
 		
 		// Row 6
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(closeButton);
 		
-		table.gridx = 0;
-		table.gridy = 6;
-		table.gridwidth = 2;
-		table.anchor = GridBagConstraints.CENTER;
-		panel.add(buttonPanel, table);
+		gbc.gridx = 0;
+		gbc.gridy = 6;
+		gbc.gridwidth = 2;
+		gbc.anchor = GridBagConstraints.CENTER;
+		panel.add(buttonPanel, gbc);
 		
 		add(panel);
 		
@@ -137,10 +143,28 @@ public class ViewPetDialog extends JDialog {
 		
 	}
 	
-	public void setCloseButtonListener(ActionListener listener) {
+	public void setCloseButtonListener(ActionListener listener) 
+	{
 	    closeButton.addActionListener(listener);
 	}
 	
-	
+	public void displayPetDetails(String petName, int petAge, String petSpecies, String petBreed, String petDescription, boolean isAdopted)
+	{
+		name.setText(petName);
+		age.setText(String.valueOf(petAge));
+		species.setText(petSpecies);
+		breed.setText(petBreed);
+		descriptionArea.setText(petDescription);
+		if(isAdopted)
+		{
+			adoptedLabel.setText("Adopted");
+		}
+		else
+		{
+			adoptedLabel.setText("Available");
+		}
+		setVisible(true);
+		
+	}
 
 }
