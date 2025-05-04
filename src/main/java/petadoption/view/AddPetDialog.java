@@ -133,7 +133,57 @@ public class AddPetDialog extends JDialog {
 	     
 	}
 	
-	
-
+		/*
+		 *  Gets the name of the pet by user enter in the text field
+		 *  
+		 *  return the pet name
+		 */
+		public String getPetName()
+		{
+			return nameField.getText()
+;		}
+		
+		/*
+		 * Get the type of pet when user select it and return the pet type
+		 */
+		public String getPetType()
+		{
+			return (String) typeComboBox.getSelectedItem();
+		}
+		
+		/*
+		 * get the pet species when is enter by user
+		 */
+		public String getPetSpecies()
+		{
+			return speciesField.getText();
+		}
+		
+		/*
+		 *  Gets the pet age which is enter by user
+		 */
+		public int getPetAge()
+		{
+			try
+			{
+				return Integer.parseInt(ageField.getText());
+			}
+			catch(NumberFormatException e)
+			{
+				return 0;
+			}
+		}
+		
+		/*
+		 * Clears everything 
+		 */
+		
+		public void clearFields()
+		{
+			nameField.setText("");
+			typeComboBox.setSelectedIndex(0);
+			speciesField.setText("");
+			ageField.setText("");
+		}
 
 }
