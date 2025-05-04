@@ -116,5 +116,37 @@ public class MainFrame extends JFrame {
 		public void addSortComboBoxListener(ActionListener listener) {
 		    sortComboBox.addActionListener(listener);
 		}
+
+		public static long getSerialversionuid() {
+			return serialVersionUID;
+		}
+
+		public JTable getPetsTable() {
+			return petsTable;
+		}
+
+		public JButton getAddButton() {
+			return addButton;
+		}
+
+		public JButton getAdoptButton() {
+			return adoptButton;
+		}
+
+		public JButton getRemoveButton() {
+			return removeButton;
+		}
+
+		public JButton getViewButton() {
+			return viewButton;
+		}
+
+		public JButton getSaveButton() {
+			return saveButton;
+		}
+
+		public JComboBox<String> getSortComboBox() {
+			return sortComboBox;
+		}
 	
 }
