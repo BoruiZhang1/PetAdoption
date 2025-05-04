@@ -2,6 +2,8 @@ package petadoption.view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -62,6 +64,20 @@ public class AddPetDialog extends JDialog {
 		
 		JLabel ageLabel = new JLabel("Age:");
 		ageField = new JTextField(5);
+		
+		// add components to panel making rows for name type,ect.
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.anchor = GridBagConstraints.WEST;
+		
+		// Row 1 for the animal label
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		contentPanel.add(nameLabel);
+		
+		gbc.gridx = 1;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		contentPanel.add(nameField, gbc);
 		
 		
 		
