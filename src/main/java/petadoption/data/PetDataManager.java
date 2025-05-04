@@ -17,6 +17,10 @@ public class PetDataManager {
 		private PetJsonSerializer pjs = new PetJsonSerializer();
 		
 		
+		/**
+		 * @return
+		 * @throws IOException
+		 */
 		public Shelter<Pet> loadPetData() throws IOException
 		{
 			Shelter<Pet> shelter = new Shelter<Pet>();
@@ -38,6 +42,10 @@ public class PetDataManager {
 		}
 	
 		
+		/**
+		 * @return
+		 * @throws IOException
+		 */
 		private List<Pet> loadNormal() throws IOException
 		{
 			String path = getClass().getResource("/pets.json").getFile();
@@ -48,6 +56,10 @@ public class PetDataManager {
 			}
 		}
 		
+		/**
+		 * @return
+		 * @throws IOException
+		 */
 		private List<ExoticAnimal> loadExotic() throws IOException
 		{
 			String path = getClass().getResource("/exotic_animals.json").getFile();
@@ -58,6 +70,11 @@ public class PetDataManager {
 			
 		}
 		
+		/**
+		 * @param shelter
+		 * @return
+		 * @throws IOException
+		 */
 		public String savePets(Shelter<Pet> shelter) throws IOException {
 	     
 	        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
