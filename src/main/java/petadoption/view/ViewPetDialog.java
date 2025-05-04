@@ -67,6 +67,18 @@ public class ViewPetDialog extends JDialog {
 		JLabel speciesTitle = new JLabel("Species/Breed:");
 		speciesLabel = new JLabel();
 		
+		// add components to panel
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.anchor = GridBagConstraints.WEST;
+		
+		// Row 1
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		contentPanel.add(nameTitle, gbc);
+		
+		gbc.gridx = 1;
+		contentPanel.add(nameLabel, gbc);
 		
 	}
 	
