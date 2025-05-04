@@ -61,7 +61,11 @@ public class PetDataManager {
 		
 		private List<ExoticAnimal> loadExotic() throws IOException
 		{
-			return null;
+			String path = getClass().getResource("/exotic_animals.json").getFile();
+			try(BufferedReader br = new BufferedReader(new FileReader(path)))
+			{
+				return gson.fromJson(br, new TypeToken<List<ExoticAnimal>>() {}.getType());
+			}
 			
 		}
 }
