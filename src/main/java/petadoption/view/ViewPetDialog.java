@@ -16,6 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+import petadoption.model.Pet;
+
 public class ViewPetDialog extends JDialog {
 	
 	private JLabel nameLabel;
@@ -133,6 +135,28 @@ public class ViewPetDialog extends JDialog {
 		
 	}
 	
+	/**
+	 * sets the detail of the pet their name and all the other attribute
+	 * 
+	 * @param pet to display
+	 */
 	
+	public void setPet(Pet pet)
+	{
+		nameLabel.setText(pet.getName());
+		ageLabel.setText(String.valueOf(pet.getAge()));
+		typeLabel.setText(pet.getType());
+		speciesLabel.setText(pet.getSpecies());
+		if(pet.isAdopted())
+		{
+			adoptedLabel.setText("Adopted");
+			adoptedLabel.setForeground(Color.red);
+		}
+		else
+		{
+			adoptedLabel.setText("Available");
+			adoptedLabel.setForeground(Color.GREEN);
+		}
+	}
 	
 }
