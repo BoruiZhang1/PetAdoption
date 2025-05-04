@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.border.EmptyBorder;
 
 public class ViewPetDialog extends JDialog {
 	
@@ -57,6 +57,11 @@ public class ViewPetDialog extends JDialog {
 		adoptedLabel = new JLabel();
 		adoptedLabel.setForeground(Color.red);
 		closeButton = new JButton("Close");
+		setTitle("Pet Details");
+		setModal(true);
+		setSize(500,400);
+		
+		
 		
 	}
 	
@@ -107,6 +112,35 @@ public class ViewPetDialog extends JDialog {
 				
 		table.gridx = 1;
 		panel.add(new JScrollPane(descriptionArea), table);
+		
+		// Row 5
+		table.gridx = 0;
+		table.gridy = 5;
+		table.gridwidth = 2;
+		table.anchor = GridBagConstraints.CENTER;
+		panel.add(adoptedLabel, table);
+		
+		// Row 6
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.add(closeButton);
+		
+		table.gridx = 0;
+		table.gridy = 6;
+		table.gridwidth = 2;
+		table.anchor = GridBagConstraints.CENTER;
+		panel.add(buttonPanel, table);
+		
+		add(panel);
+		
+		JPanel buttonPanel1 = new JPanel();
+		buttonPanel1.add(closeButton);
+		
 	}
+	
+	public void setCloseButtonListener(ActionListener listener) {
+	    closeButton.addActionListener(listener);
+	}
+	
+	
 
 }
