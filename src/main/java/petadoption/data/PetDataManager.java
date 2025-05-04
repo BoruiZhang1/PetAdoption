@@ -11,14 +11,17 @@ import petadoption.model.ExoticAnimalAdapter;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 public class PetDataManager {
 	
+		
 		private PetJsonSerializer pjs = new PetJsonSerializer();
 		
 		
-		/**
-		 * @return
+		/** Note that when loading exotic animal we are using the adapter wrapper so that we can add it as a pet into shelter instead of as an exotic animal 
+		 * @return shelter that has the pets which are loaded from the pet json and exotic animals json file
 		 * @throws IOException
 		 */
 		public Shelter<Pet> loadPetData() throws IOException
@@ -42,8 +45,8 @@ public class PetDataManager {
 		}
 	
 		
-		/**
-		 * @return
+		/**loads normal pets from pet json
+		 * @return the list of pet objects that is deserialized using jsonToPets 
 		 * @throws IOException
 		 */
 		private List<Pet> loadNormal() throws IOException
@@ -56,8 +59,8 @@ public class PetDataManager {
 			}
 		}
 		
-		/**
-		 * @return
+		/**loads exotic pets from exotic animal json
+		 * @return list of exotic animal objs deserialzied by jsonToExotic after reading exotic animals json file
 		 * @throws IOException
 		 */
 		private List<ExoticAnimal> loadExotic() throws IOException
@@ -70,15 +73,15 @@ public class PetDataManager {
 			
 		}
 		
-		/**
-		 * @param shelter
-		 * @return
+		/**Saves the newest edited list of pets with a time stamp 
+		 * @param shelter contains all the pets
+		 * @return name of the file saved
 		 * @throws IOException
 		 */
 		public String savePets(Shelter<Pet> shelter) throws IOException {
 	     
-	        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-	        String name = timestamp + "_pets.json";
+			String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+		    String name = timestamp + "_pets.json";
 	        
 	        // Write to file
 	        try (FileWriter writer = new FileWriter(name)) {
